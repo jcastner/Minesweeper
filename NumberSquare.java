@@ -1,7 +1,14 @@
 public class NumberSquare extends Square {
     private int neighborMines, row, col;
 
+    /**
+     * Main number square constructor
+     * @param neighborMines Amount of adjacent mines
+     * @param row y coord of the square
+     * @param col x coord of the square
+     */
     public NumberSquare(int neighborMines, int row, int col) {
+        super((neighborMines == 0 ? "-" : Integer.toString(neighborMines)), false, false);
         this.neighborMines = neighborMines;
         this.row = row;
         this.col = col;
@@ -11,7 +18,9 @@ public class NumberSquare extends Square {
     public boolean uncover() {
         if(!isFlagged()) {
             setUncovered();
-            setElement(); // Max #?
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -21,6 +30,6 @@ public class NumberSquare extends Square {
 
     @Override
     public boolean isMine() {
-        return false;
+        return false; // Number square is never a mine
     }
 }
